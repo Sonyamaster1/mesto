@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Место</title>
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
+        <div class="header__line"></div>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar-container">
+            <img
+              src="./images/кусто.jpg"
+              alt="Жак Ив Кусто"
+              class="profile__avatar"
+            />
+          </div>
+          <div class="profile__info">
+            <div class="profile__info-container">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <div class="profile__button_edit">
+                <img
+                  src="./images/Vectoredit.svg"
+                  alt="Карандаш"
+                  class="profile__button_edit_image"
+                />
+              </div>
+            </div>
+            <p class="profile__about">Исследователь океана</p>
+          </div>
+          <div class="popup">
+            <div class="popup_container">
+              <div class="popup_body">
+                <h2 class="popup_text">Редактировать профиль</h2>
+                <form class="popup_form">
+                  <div class="popup_item">
+                    <input
+                      class="popup_input popup_input_first"
+                      type="text"
+                      value="Жак-Ив Кусто"
+                      autocomplete="off"
+                    />
+                    <div class="popup_line"></div>
+                  </div>
+                  <div class="popup_item">
+                    <input
+                      class="popup_input popup_input_second"
+                      type="text"
+                      value="Исследователь океана"
+                      autocomplete="off"
+                    />
+                    <div class="popup_line"></div>
+                  </div>
+                  <button type="submit" class="popup_button">Сохранить</button>
+                </form>
+                <div class="popup__close">
+                  <img
+                    src="./images/Close Icon.svg"
+                    alt="закрывающий крестик"
+                    class="popup__close_image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile__button_add">
+            <img
+              src="./images/Vector.svg"
+              alt="Кнопка добавления"
+              class="profile__button_add_image"
+            />
+          </div>
+        </section>
+        <section class="elements">
+          <div class="element">
+            <img
+              src="./images/Алтай.jpg"
+              alt=" Горы на Алтае"
+              class="element__image"
+            />
+            <div class="element__text">
+              <h2 class="element__title">Алтай</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              src="./images/Ванака.jpg"
+              alt="Ванака"
+              class="element__image"
+            />
+            <div class="element__text">
+              <h2 class="element__title">Ванака</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              src="./images/гораЭльбрус.png"
+              alt="Эльбрус"
+              class="element__image"
+            />
+            <div class="element__text">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              src="./images/Домбай.png"
+              alt="Домбай"
+              class="element__image"
+            />
+            <div class="element__text">
+              <h2 class="element__title">Домбай</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              src="./images/Карачаевск.png"
+              alt="Карачаевск"
+              class="element__image"
+            />
+            <div class="element__text">
+              <h2 class="element__title">Карачаевск</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img src="./images/козлик.jpg" alt="Козел" class="element__image" />
+            <div class="element__text">
+              <h2 class="element__title">Горный козел</h2>
+              <img
+                src="./images/Vector3.svg"
+                alt="Сердце"
+                class="element__like"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

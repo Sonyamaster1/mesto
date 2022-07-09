@@ -1,0 +1,14 @@
+.popup_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 36px 30px 36px;
+}
+.popup_item:last-of-type {
+  margin-bottom: 0;
+}
+@media (max-width: 650px) {
+  .popup_item {
+    margin: 0 22px 30px 22px;
+  }
+}
