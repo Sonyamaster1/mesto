@@ -1,26 +1,19 @@
 .elements {
   max-width: 100%;
-  margin: 50px auto 66px auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(23%, 1fr));
   grid-template-rows: repeat(2, minmax(48%, 1fr));
   gap: 20px 17px;
 }
-@media (max-width: 820px){
+@media (max-width: 820px) {
   .elements {
-    margin: 40px auto 50px auto;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
 }
-@media (max-width: 595px){
+@media (max-width: 595px) {
   .elements {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
-  }
-}
-@media (max-width: 320px){
-  .elements {
-    margin: 36px 19px 48px 19px;
   }
 }

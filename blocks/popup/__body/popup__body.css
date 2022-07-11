@@ -1,4 +1,4 @@
-.popup_body {
+.popup__body {
   margin: auto;
   max-width: 430px;
   background-color: #fff;
@@ -8,7 +8,7 @@
   border-radius: 10px;
 }
 @media (max-width: 650px) {
-  .popup_body {
+  .popup__body {
     max-width: 282px;
     padding: 25px 0;
   }

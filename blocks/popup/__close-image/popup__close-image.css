@@ -1,9 +1,9 @@
-.popup__close_image {
+.popup__close-image {
   width: 32px;
   height: 32px;
 }
 @media (max-width: 650px) {
-  .popup__close_image {
+  .popup__close-image {
     width: 20px;
     height: 20px;
   }

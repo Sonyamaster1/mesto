@@ -1,4 +1,4 @@
-let openPopUp = document.querySelector(".profile__button_edit");
+let openPopUp = document.querySelector(".profile__button-edit");
 let closePopUp = document.querySelector(".popup__close");
 let popUp = document.querySelector(".popup");
 
@@ -10,9 +10,9 @@ closePopUp.addEventListener("click", function () {
   popUp.classList.remove("popup_opened");
 });
 
-let formElement = document.querySelector(".popup_form");
-let nameInput = document.querySelector(".popup_input_first");
-let jobInput = document.querySelector(".popup_input_second");
+let formElement = document.querySelector(".popup__form");
+let nameInput = document.querySelector(".popup__input_first");
+let jobInput = document.querySelector(".popup__input_second");
 let saveButton = document.querySelector(".popup_button");
 let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");

@@ -1,4 +1,4 @@
-.popup_button {
+.popup__button {
   cursor: pointer;
   display: block;
   width: 358px;
@@ -15,7 +15,7 @@
   border-radius: 2px;
 }
 @media (max-width: 650px) {
-  .popup_button {
+  .popup__button {
     max-width: 238px;
     margin: 45px auto 0 auto;
     font-size: 14px;

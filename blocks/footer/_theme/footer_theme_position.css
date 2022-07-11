@@ -1,0 +1,8 @@
+.footer_theme_position {
+  margin: 0 auto;
+}
+@media (max-width: 320px) {
+  .footer_theme_position {
+    margin: 0 19px;
+  }
+}

@@ -13,8 +13,3 @@
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 320px){
-  .profile {
-    margin: 0 19px 0 19px;
-  }
-}
