@@ -1,8 +1,7 @@
 .popup__button {
   cursor: pointer;
-  display: block;
   width: 358px;
-  margin: 48px auto 0 auto;
+  margin: 48px 36px 0 36px;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -17,7 +16,8 @@
 @media (max-width: 650px) {
   .popup__button {
     max-width: 238px;
-    margin: 45px auto 0 auto;
+    min-height: 46px;
+    margin: 45px 22px 0 22px;
     font-size: 14px;
   }
 }

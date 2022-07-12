@@ -2,15 +2,18 @@
   position: absolute;
   max-width: 32px;
   min-height: 32px;
-  top: -34px;
-  right: -34px;
+  top: -40px;
+  right: -40px;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }
 @media (max-width: 650px) {
   .popup__close {
     max-width: 20px;
     min-height: 20px;
-    top: -30px;
+    top: -36px;
     right: 0px;
   }
 }

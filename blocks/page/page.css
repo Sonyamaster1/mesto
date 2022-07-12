@@ -27,19 +27,19 @@
     max-width: 820px;
   }
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .page {
     max-width: 768px;
     padding: 35px 70px 40px 70px;
   }
 }
-@media (max-width: 650px){
+@media (max-width: 650px) {
   .page {
     max-width: 650px;
     padding: 35px 56px 40px 56px;
   }
 }
-@media (max-width: 595px){
+@media (max-width: 595px) {
   .page {
     max-width: 595px;
   }
@@ -47,12 +47,6 @@
 @media (max-width: 425px) {
   .page {
     max-width: 425px;
-    padding: 28px 26px 36px 26px;
-  }
-}
-@media (max-width: 320px){
-  .page {
-    max-width: 320px;
     padding: 28px 0 36px 0;
   }
 }

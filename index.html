@@ -10,78 +10,40 @@
     <div class="page">
       <header class="header header_theme_position">
         <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
-        <div class="header__line"></div>
       </header>
       <main class="content">
         <section class="profile profile_theme_position">
-          <div class="profile__avatar-container">
-            <img
-              src="./images/кусто.jpg"
-              alt="Жак Ив Кусто"
-              class="profile__avatar"
-            />
-          </div>
+          <img
+            src="./images/кусто.jpg"
+            alt="Жак Ив Кусто"
+            class="profile__avatar"
+          />
           <div class="profile__info">
             <div class="profile__info-container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <div class="profile__button-edit">
+              <button type="button" class="profile__button-edit">
                 <img
                   src="./images/Vectoredit.svg"
                   alt="Карандаш"
                   class="profile__image-edit"
                 />
-              </div>
+              </button>
             </div>
             <p class="profile__about">Исследователь океана</p>
           </div>
-          <div class="popup">
-            <div class="popup__container">
-              <div class="popup__body">
-                <h2 class="popup__text">Редактировать профиль</h2>
-                <form class="popup__form">
-                  <div class="popup__item">
-                    <input
-                      class="popup__input popup__input_first"
-                      type="text"
-                      value="Жак-Ив Кусто"
-                      autocomplete="off"
-                    />
-                    <div class="popup__line"></div>
-                  </div>
-                  <div class="popup__item">
-                    <input
-                      class="popup__input popup__input_second"
-                      type="text"
-                      value="Исследователь океана"
-                      autocomplete="off"
-                    />
-                    <div class="popup__line"></div>
-                  </div>
-                  <button type="submit" class="popup__button">Сохранить</button>
-                </form>
-                <div class="popup__close">
-                  <img
-                    src="./images/CloseIcon.svg"
-                    alt="закрывающий крестик"
-                    class="popup__close-image"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="profile__button-add">
+          <button type="button" class="profile__button-add">
             <img
               src="./images/Vector.svg"
               alt="Кнопка добавления"
               class="profile__image-add"
             />
-          </div>
+          </button>
         </section>
         <section class="elements elements_theme_position">
           <div class="element">
             <img
               src="./images/Алтай.jpg"
-              alt=" Горы на Алтае"
+              alt="Горы на Алтае"
               class="element__image"
             />
             <div class="element__text">
@@ -95,12 +57,12 @@
           </div>
           <div class="element">
             <img
-              src="./images/Ванака.jpg"
-              alt="Ванака"
+              src="./images/тюмень.png"
+              alt="Тюмень"
               class="element__image"
             />
             <div class="element__text">
-              <h2 class="element__title">Ванака</h2>
+              <h2 class="element__title">Тюмень</h2>
               <img
                 src="./images/Vector3.svg"
                 alt="Сердце"
@@ -154,7 +116,7 @@
             </div>
           </div>
           <div class="element">
-            <img src="./images/козлик.jpg" alt="Козел" class="element__image" />
+            <img src="./images/козлик.png" alt="Козел" class="element__image" />
             <div class="element__text">
               <h2 class="element__title">Горный козел</h2>
               <img
@@ -169,7 +131,36 @@
       <footer class="footer footer_theme_position">
         <p class="footer__text">&copy; 2020 Mesto Russia</p>
       </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__text">Редактировать профиль</h2>
+          <form class="popup__form" name="form">
+            <input
+              class="popup__input popup__input_type_name"
+              type="text"
+              value="Жак-Ив Кусто"
+              name="name"
+              autocomplete="off"
+            />
+            <input
+              class="popup__input popup__input_type_about"
+              type="text"
+              value="Исследователь океана"
+              name="about"
+              autocomplete="off"
+            />
+            <button type="submit" class="popup__button">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="закрывающий крестик"
+              class="popup__close-image"
+            />
+          </button>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

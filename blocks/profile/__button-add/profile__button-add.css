@@ -11,6 +11,7 @@
   align-items: center;
   transition: opacity 0.3s linear;
   justify-self: flex-end;
+  background-color: transparent;
 }
 .profile__button-add:hover {
   opacity: 0.5;
@@ -34,7 +35,7 @@
   }
 }
 @media (max-width: 320px) {
-  .profile__button_add {
+  .profile__button-add {
     width: 100%;
   }
 }

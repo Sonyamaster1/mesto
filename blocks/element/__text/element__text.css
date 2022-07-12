@@ -8,3 +8,8 @@
   align-items: center;
   width: 100%;
 }
+@media (max-width:320px) {
+.element__text{
+  max-width: 282px;
+}
+}

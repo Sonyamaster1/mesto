@@ -1,7 +1,7 @@
 .element__like {
   width: 22px;
   height: 19px;
-  margin-right: 17px;
+  margin: 30px 20px 31px 0;
   transition: opacity 0.3s linear;
 }
 .element__like:hover {
