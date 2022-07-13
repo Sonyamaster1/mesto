@@ -15,12 +15,13 @@
 }
 @media (max-width: 595px) {
   .elements {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
-@media (max-width: 425px) {
-  .elements{
+@media (max-width: 320px) {
+  .elements {
     padding: 36px 19px 48px 19px;
   }
 }

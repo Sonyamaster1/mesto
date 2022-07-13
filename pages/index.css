@@ -7,6 +7,7 @@
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/element/__button/element__button.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/header.css);
