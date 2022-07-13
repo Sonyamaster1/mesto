@@ -9,6 +9,8 @@ let profileAbout = document.querySelector('.profile__about');
 
 function openHandler() {
   popUp.classList.add('popup_opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileAbout.textContent;
 }
 
 function closeHandler() {
@@ -19,7 +21,6 @@ function formSubmitHandler(evt) {
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
   closeHandler();
-  /*popUp.classList.remove('popup_opened');*/
 }
 
 openPopUp.addEventListener('click', openHandler);
