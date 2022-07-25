@@ -40,7 +40,7 @@
           </button>
         </section>
         <section class="elements">
-          <div class="element">
+          <!--<div class="element">
             <img
               src="./images/Алтай.jpg"
               alt="Горы на Алтае"
@@ -48,7 +48,7 @@
             />
             <div class="element__text">
               <h2 class="element__title">Алтай</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -56,6 +56,13 @@
                 />
               </button>
             </div>
+            <button class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -65,7 +72,7 @@
             />
             <div class="element__text">
               <h2 class="element__title">Тюмень</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -73,6 +80,13 @@
                 />
               </button>
             </div>
+            <button type="reset" class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -82,7 +96,7 @@
             />
             <div class="element__text">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -90,6 +104,13 @@
                 />
               </button>
             </div>
+            <button type="reset" class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -99,7 +120,7 @@
             />
             <div class="element__text">
               <h2 class="element__title">Домбай</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -107,6 +128,13 @@
                 />
               </button>
             </div>
+            <button type="reset" class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -116,7 +144,7 @@
             />
             <div class="element__text">
               <h2 class="element__title">Карачаевск</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -124,12 +152,19 @@
                 />
               </button>
             </div>
+            <button type="reset" class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
           </div>
           <div class="element">
             <img src="./images/козлик.png" alt="Козел" class="element__image" />
             <div class="element__text">
               <h2 class="element__title">Горный козел</h2>
-              <button type="button" class="element__button">
+              <button type="button" class="element__button-like">
                 <img
                   src="./images/Vector3.svg"
                   alt="Сердце"
@@ -137,7 +172,14 @@
                 />
               </button>
             </div>
-          </div>
+            <button type="reset" class="element__button-trash">
+              <img
+                src="./images/trash.svg"
+                alt="Мусорка"
+                class="element__trash"
+              />
+            </button>
+          </div>-->
         </section>
       </main>
       <footer class="footer">
@@ -172,6 +214,62 @@
           </button>
         </div>
       </div>
+      <div class="popup popup_cards">
+        <div class="popup__container">
+          <h2 class="popup__text">Новое место</h2>
+          <form class="popup__form popup__cards-form" name="form">
+            <input
+              class="popup__input popup__input_type_image"
+              type="text"
+              name="image"
+              autocomplete="off"
+              placeholder="Название"
+            />
+            <input
+              class="popup__input popup__input_type_link"
+              type="text"
+              name="link"
+              autocomplete="off"
+              placeholder="Ссылка на картинку"
+            />
+            <button type="submit" class="popup__button">Создать</button>
+          </form>
+          <button type="button" class="popup__close popup__close-cards">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="закрывающий крестик"
+              class="popup__close-image"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="full-screen">
+        <figure class="full-screen__container">
+          <img src="./images/Алтай.jpg" alt="" class="full-screen__image" />
+          <figcaption class="full-screen__text">текст</figcaption>
+          <button type="button" class="full-screen__close">
+            <img
+              src="./images/CloseIcon.svg"
+              alt="закрывающий крестик"
+              class="full-screen__close-image"
+            />
+          </button>
+        </figure>
+      </div>
+      <template id="template-element">
+        <div class="element">
+          <img class="element__image" />
+          <div class="element__text">
+            <h2 class="element__title"></h2>
+            <button type="button" class="element__button-like">
+              <img src="./images/Vector3.svg" class="element__like" />
+            </button>
+          </div>
+          <button type="reset" class="element__button-trash">
+            <img src="./images/trash.svg" class="element__trash" />
+          </button>
+        </div>
+      </template>
     </div>
     <script src="./scripts/index.js"></script>
   </body>

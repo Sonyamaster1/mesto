@@ -1,5 +1,6 @@
 .elements {
   max-width: 100%;
+  max-height: 755px;
   display: grid;
   grid-template-columns: repeat(3, minmax(23%, 1fr));
   grid-template-rows: repeat(2, minmax(48%, 1fr));
