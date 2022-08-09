@@ -42,27 +42,46 @@
         <section class="elements"></section>
       </main>
       <footer class="footer">
-        <p class="footer__text">&copy; 2020 Mesto Russia</p>
+        <p class="footer__text">&copy; 2022 Митрофанова Софья</p>
       </footer>
       <div class="popup popup_edit">
         <div class="popup__container">
-          <h2 class="popup__text">Редактировать профиль</h2>
-          <form class="popup__form popup__form-data" name="form">
-            <input
-              class="popup__input popup__input_type_name"
-              type="text"
-              value="Жак-Ив Кусто"
-              name="name"
-              autocomplete="off"
-            />
-            <input
-              class="popup__input popup__input_type_about"
-              type="text"
-              value="Исследователь океана"
-              name="about"
-              autocomplete="off"
-            />
-            <button type="submit" class="popup__button">Сохранить</button>
+          <legend class="popup__text">Редактировать профиль</legend>
+          <form
+            class="popup__form popup__form-data"
+            name="profile"
+            id="profile"
+            novalidate
+          >
+            <fieldset class="popup__fieldset popup__fieldset_type_profile">
+              <input
+                class="popup__input popup__input_type_name"
+                type="text"
+                value="Жак-Ив Кусто"
+                name="name"
+                id="name-input"
+                autocomplete="off"
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="popup__error name-input-error"></span>
+              <input
+                class="popup__input popup__input_type_about"
+                type="text"
+                value="Исследователь океана"
+                name="about"
+                id="about-input"
+                autocomplete="off"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="popup__error about-input-error"></span>
+            </fieldset>
+            <button type="submit" class="popup__button popup__button_type_save">
+              Сохранить
+            </button>
           </form>
           <button type="button" class="popup__close popup__close-data">
             <img
@@ -76,22 +95,42 @@
       <div class="popup popup_cards">
         <div class="popup__container">
           <h2 class="popup__text">Новое место</h2>
-          <form class="popup__form popup__cards-form" name="cards">
-            <input
-              class="popup__input popup__input_type_image"
-              type="text"
-              name="image"
-              autocomplete="off"
-              placeholder="Название"
-            />
-            <input
-              class="popup__input popup__input_type_link"
-              type="text"
-              name="link"
-              autocomplete="off"
-              placeholder="Ссылка на картинку"
-            />
-            <button type="submit" class="popup__button">Создать</button>
+          <form
+            class="popup__form popup__cards-form"
+            name="cards"
+            id="cards"
+            novalidate
+          >
+            <fieldset class="popup__fieldset popup__fieldset_type_cards">
+              <input
+                class="popup__input popup__input_type_image"
+                type="text"
+                name="image"
+                id="image-input"
+                autocomplete="off"
+                placeholder="Название"
+                minlength="1"
+                maxlength="30"
+                required
+              />
+              <span class="popup__error image-input-error"></span>
+              <input
+                class="popup__input popup__input_type_link"
+                type="url"
+                name="link"
+                id="link-input"
+                autocomplete="off"
+                placeholder="Ссылка на картинку"
+                required
+              />
+              <span class="popup__error link-input-error"></span>
+            </fieldset>
+            <button
+              type="submit"
+              class="popup__button popup__button_type_create"
+            >
+              Создать
+            </button>
           </form>
           <button type="button" class="popup__close popup__close-cards">
             <img
@@ -102,7 +141,7 @@
           </button>
         </div>
       </div>
-      <div class="popup popup_full-screen">
+      <div class="popup popup_full-screen" tabindex="-1">
         <figure class="popup__container-full-screen">
           <img src="./images/Алтай.jpg" alt="" class="popup__full-image" />
           <figcaption class="popup__full-text">текст</figcaption>
@@ -132,5 +171,6 @@
       </template>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

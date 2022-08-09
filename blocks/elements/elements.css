@@ -1,16 +1,13 @@
 .elements {
   max-width: 100%;
-  max-height: 755px;
   display: grid;
   grid-template-columns: repeat(3, minmax(23%, 1fr));
-  grid-template-rows: repeat(2, minmax(48%, 1fr));
   gap: 20px 17px;
   padding: 50px 0 66px 0;
 }
 @media (max-width: 820px) {
   .elements {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     padding: 40px 0 50px 0;
   }
 }

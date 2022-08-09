@@ -13,7 +13,6 @@
   width: 358px;
 }
 .popup__input:focus {
-  outline: blue 1px solid;
   border-radius: 2px;
 }
 .popup__input:last-of-type {

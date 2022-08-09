@@ -32,26 +32,47 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
+const popUp = document.querySelectorAll('.popup');
 
 function openPopup(popup) {
-  //новый попап шаблон
   popup.classList.add('popup_opened');
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+//закрытие по esc
+function closeEscPopUp(evt) {
+  if (evt.key === 'Escape') {
+    popUp.forEach((popup) => {
+      closePopup(popup);
+    });
+  }
+}
+//закрытие по overlay
+function closeOverlayPopUp(evt) {
+  if (evt.target === evt.currentTarget) {
+    popUp.forEach((popup) => {
+      closePopup(popup);
+    });
+  }
 }
 
 function assingValue() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
   openPopup(popUpProfile);
+  popUpProfile.addEventListener('keydown', closeEscPopUp); //присваивается событие
+  popUpProfile.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
 }
 function submitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
   closePopup(popUpProfile);
+  popUpProfile.removeEventListener('keydown', closeEscPopUp); //событие удаляется
+  popUpProfile.removeEventListener('click', closeOverlayPopUp); //закрытие по overlay
 }
+
 popupProfileOpenButton.addEventListener('click', assingValue);
 popupProfileFormElement.addEventListener('submit', submitProfile);
 popupProfileCloseButton.addEventListener('click', () =>
@@ -65,6 +86,8 @@ const cardsForm = document.querySelector('.popup__cards-form');
 
 popUpAdd.addEventListener('click', () => openPopup(popUpCards));
 popUpRemove.addEventListener('click', () => closePopup(popUpCards));
+popUpCards.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
+popUpCards.addEventListener('keydown', closeEscPopUp); //закрытие по esc
 
 const imageCollection = document.querySelector('.elements');
 const template = document
@@ -94,8 +117,10 @@ function createNewCard(cardName, cardLink) {
     fullScreenImage.setAttribute('alt', `${elementText.textContent}`);
     openPopup(fullScreen);
   }
-  templateImage.addEventListener('click', assingClass);
 
+  templateImage.addEventListener('click', assingClass);
+  fullScreen.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
+  fullScreen.addEventListener('keydown', closeEscPopUp); //закрытие по esc
   return tamplateCard;
 }
 
@@ -108,6 +133,7 @@ function deleteCard(evt) {
   cardClose.remove();
 }
 const fullScreen = document.querySelector('.popup_full-screen');
+fullScreen.focus();
 const fullScreenClose = document.querySelector('.popup__close-full-screen');
 fullScreenClose.addEventListener('click', () => closePopup(fullScreen));
 
@@ -120,6 +146,11 @@ cardsForm.addEventListener('submit', function (evt) {
   closePopup(popUpCards);
   cardsImage.value = '';
   cardsLink.value = '';
+  const submitButtonCreate = document.querySelector(
+    '.popup__button_type_create'
+  );
+  submitButtonCreate.setAttribute('disabled', 'disabled');
+  submitButtonCreate.classList.add('popup__button_disabled');
 });
 
 function createInitialCards() {
@@ -127,6 +158,7 @@ function createInitialCards() {
     renderCard(createNewCard(element.link, element.name), imageCollection);
   });
 }
+
 createInitialCards();
 
 function renderCard(card, container) {
