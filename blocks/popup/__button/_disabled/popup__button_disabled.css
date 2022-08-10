@@ -1,3 +1,4 @@
 .popup__button_disabled{
   opacity: 0.2;
+  cursor: default;
 }

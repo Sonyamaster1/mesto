@@ -19,5 +19,21 @@
 @media (max-width: 820px) {
   .element__image {
     height: 282px;
+    width: 282px;
   }
+}
+@media (max-width: 723px) {
+  .element__image {
+    width: 282px;
+  }
+}
+@media (max-width: 675px) {
+  .element__image {
+    width: 250px;
+  }
+}
+@media (max-width:600px) {
+.element__image{
+  width: 282px;
+}
 }

@@ -32,28 +32,32 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
-const popUp = document.querySelectorAll('.popup');
+const fullScreenImage = document.querySelector('.popup__full-image');
+const fullScreenText = document.querySelector('.popup__full-text');
+const submitButtonCreate = document.querySelector('.popup__button_type_create');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 }
 //закрытие по esc
-function closeEscPopUp(evt) {
-  if (evt.key === 'Escape') {
-    popUp.forEach((popup) => {
-      closePopup(popup);
-    });
+function closeByEsc(evt) {
+  if (evt.key === 'Escape' || evt.target.classList.contains('popup_opened')) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 //закрытие по overlay
 function closeOverlayPopUp(evt) {
-  if (evt.target === evt.currentTarget) {
-    popUp.forEach((popup) => {
-      closePopup(popup);
-    });
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains('popup_opened')
+  ) {
+    evt.target.classList.remove('popup_opened');
   }
 }
 
@@ -61,7 +65,6 @@ function assingValue() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
   openPopup(popUpProfile);
-  popUpProfile.addEventListener('keydown', closeEscPopUp); //присваивается событие
   popUpProfile.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
 }
 function submitProfile(evt) {
@@ -69,8 +72,6 @@ function submitProfile(evt) {
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
   closePopup(popUpProfile);
-  popUpProfile.removeEventListener('keydown', closeEscPopUp); //событие удаляется
-  popUpProfile.removeEventListener('click', closeOverlayPopUp); //закрытие по overlay
 }
 
 popupProfileOpenButton.addEventListener('click', assingValue);
@@ -87,7 +88,6 @@ const cardsForm = document.querySelector('.popup__cards-form');
 popUpAdd.addEventListener('click', () => openPopup(popUpCards));
 popUpRemove.addEventListener('click', () => closePopup(popUpCards));
 popUpCards.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
-popUpCards.addEventListener('keydown', closeEscPopUp); //закрытие по esc
 
 const imageCollection = document.querySelector('.elements');
 const template = document
@@ -108,19 +108,15 @@ function createNewCard(cardName, cardLink) {
   const elementTrash = tamplateCard.querySelector('.element__button-trash');
   elementTrash.addEventListener('click', deleteCard);
   //картинка на большом разрешении
-  const elementText = tamplateCard.querySelector('.element__title');
-  const fullScreenImage = document.querySelector('.popup__full-image');
-  const fullScreenText = document.querySelector('.popup__full-text');
   function assingClass(event) {
-    fullScreenImage.src = event.target.src;
-    fullScreenText.textContent = elementText.textContent;
-    fullScreenImage.setAttribute('alt', `${elementText.textContent}`);
+    fullScreenText.textContent = cardLink;
+    fullScreenImage.src = cardName;
+    fullScreenImage.setAttribute('alt', `${templateTitle.textContent}`);
     openPopup(fullScreen);
   }
 
   templateImage.addEventListener('click', assingClass);
   fullScreen.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
-  fullScreen.addEventListener('keydown', closeEscPopUp); //закрытие по esc
   return tamplateCard;
 }
 
@@ -133,7 +129,6 @@ function deleteCard(evt) {
   cardClose.remove();
 }
 const fullScreen = document.querySelector('.popup_full-screen');
-fullScreen.focus();
 const fullScreenClose = document.querySelector('.popup__close-full-screen');
 fullScreenClose.addEventListener('click', () => closePopup(fullScreen));
 
@@ -146,9 +141,6 @@ cardsForm.addEventListener('submit', function (evt) {
   closePopup(popUpCards);
   cardsImage.value = '';
   cardsLink.value = '';
-  const submitButtonCreate = document.querySelector(
-    '.popup__button_type_create'
-  );
   submitButtonCreate.setAttribute('disabled', 'disabled');
   submitButtonCreate.classList.add('popup__button_disabled');
 });

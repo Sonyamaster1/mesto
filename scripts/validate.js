@@ -4,25 +4,19 @@ const obj = {
   submitButtonSelector: '.popup__button', //кнопка сохранить
   inactiveButtonClass: 'popup__button_disabled', //неактивная кнопка сохранить
   inputErrorClass: 'popup__input_type_error', //поле ввода с ошибкой
-  errorClass: '.${input.id}-error', //span
+  errorClass: 'popup__input_type_error-active', //span
 };
-//очищение span (заготовка)
-/*const deleteSpanElement = (obj, form) => {
-  const errorItem = form.querySelector(`.${input.id}-error`);
-  errorItem.value = '';
-};
-popupProfileCloseButton.addEventListener('click', deleteSpanElement);*/
-//
+
 const showInputError = (form, input, errorMessage, obj) => {
   const errorItem = form.querySelector(`.${input.id}-error`);
   input.classList.add(obj.inputErrorClass);
-  errorItem.classList.add('popup__input_type_error-active');
+  errorItem.classList.add(obj.errorClass);
   errorItem.textContent = errorMessage;
 };
 const hideInputError = (form, input, obj) => {
   const errorItem = form.querySelector(`.${input.id}-error`);
   input.classList.remove(obj.inputErrorClass);
-  errorItem.classList.remove('popup__input_type_error-active');
+  errorItem.classList.remove(obj.errorClass);
   errorItem.textContent = '';
 };
 //
@@ -68,9 +62,6 @@ const enableValidation = (obj) => {
     document.querySelectorAll(obj.formSelector)
   );
   formCollection.forEach((form) => {
-    form.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
     setEventListener(form, obj);
   });
 };
