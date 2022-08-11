@@ -46,18 +46,15 @@ function closePopup(popup) {
 }
 //закрытие по esc
 function closeByEsc(evt) {
-  if (evt.key === 'Escape' || evt.target.classList.contains('popup_opened')) {
+  if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 }
 //закрытие по overlay
 function closeOverlayPopUp(evt) {
-  if (
-    evt.target === evt.currentTarget ||
-    evt.target.classList.contains('popup_opened')
-  ) {
-    evt.target.classList.remove('popup_opened');
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
   }
 }
 
@@ -65,7 +62,6 @@ function assingValue() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
   openPopup(popUpProfile);
-  popUpProfile.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
 }
 function submitProfile(evt) {
   evt.preventDefault();
@@ -79,6 +75,7 @@ popupProfileFormElement.addEventListener('submit', submitProfile);
 popupProfileCloseButton.addEventListener('click', () =>
   closePopup(popUpProfile)
 );
+popUpProfile.addEventListener('click', (evt) => closeOverlayPopUp(evt, popUpProfile)); //закрытие по overlay
 
 const popUpAdd = document.querySelector('.profile__button-add');
 const popUpRemove = document.querySelector('.popup__close-cards');
@@ -87,7 +84,7 @@ const cardsForm = document.querySelector('.popup__cards-form');
 
 popUpAdd.addEventListener('click', () => openPopup(popUpCards));
 popUpRemove.addEventListener('click', () => closePopup(popUpCards));
-popUpCards.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
+popUpCards.addEventListener('click', (evt) => closeOverlayPopUp(evt, popUpCards)); //закрытие по overlay
 
 const imageCollection = document.querySelector('.elements');
 const template = document
@@ -111,12 +108,12 @@ function createNewCard(cardName, cardLink) {
   function assingClass(event) {
     fullScreenText.textContent = cardLink;
     fullScreenImage.src = cardName;
-    fullScreenImage.setAttribute('alt', `${templateTitle.textContent}`);
+    fullScreenImage.setAttribute('alt', cardLink);
     openPopup(fullScreen);
   }
 
   templateImage.addEventListener('click', assingClass);
-  fullScreen.addEventListener('click', closeOverlayPopUp); //закрытие по overlay
+  fullScreen.addEventListener('click', (evt) => closeOverlayPopUp(evt, fullScreen)); //закрытие по overlayy
   return tamplateCard;
 }
 
