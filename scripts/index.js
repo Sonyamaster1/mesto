@@ -57,6 +57,15 @@ function closeOverlayPopUp(evt) {
     closePopup(evt.target);
   }
 }
+/*хочу реализовать данную функцию после сдачи спринта, большое спасибо за идею*/
+//универсальная функция
+/*document.querySelectorAll('.popup').forEach( popup => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    };
+  });
+});*/
 
 function assingValue() {
   nameInput.value = profileName.textContent;
@@ -75,7 +84,6 @@ popupProfileFormElement.addEventListener('submit', submitProfile);
 popupProfileCloseButton.addEventListener('click', () =>
   closePopup(popUpProfile)
 );
-popUpProfile.addEventListener('click', (evt) => closeOverlayPopUp(evt, popUpProfile)); //закрытие по overlay
 
 const popUpAdd = document.querySelector('.profile__button-add');
 const popUpRemove = document.querySelector('.popup__close-cards');
@@ -84,7 +92,6 @@ const cardsForm = document.querySelector('.popup__cards-form');
 
 popUpAdd.addEventListener('click', () => openPopup(popUpCards));
 popUpRemove.addEventListener('click', () => closePopup(popUpCards));
-popUpCards.addEventListener('click', (evt) => closeOverlayPopUp(evt, popUpCards)); //закрытие по overlay
 
 const imageCollection = document.querySelector('.elements');
 const template = document
@@ -113,7 +120,6 @@ function createNewCard(cardName, cardLink) {
   }
 
   templateImage.addEventListener('click', assingClass);
-  fullScreen.addEventListener('click', (evt) => closeOverlayPopUp(evt, fullScreen)); //закрытие по overlayy
   return tamplateCard;
 }
 
@@ -141,6 +147,16 @@ cardsForm.addEventListener('submit', function (evt) {
   submitButtonCreate.setAttribute('disabled', 'disabled');
   submitButtonCreate.classList.add('popup__button_disabled');
 });
+//все слушатели для закрытия по клику на overlay
+fullScreen.addEventListener('click', (evt) =>
+  closeOverlayPopUp(evt, fullScreen)
+); //закрытие по overlay
+popUpProfile.addEventListener('click', (evt) =>
+  closeOverlayPopUp(evt, popUpProfile)
+); //закрытие по overlay
+popUpCards.addEventListener('click', (evt) =>
+  closeOverlayPopUp(evt, popUpCards)
+); //закрытие по overlay
 
 function createInitialCards() {
   initialCards.forEach(function (element) {
