@@ -25,7 +25,6 @@ const initialCards = [
   },
 ];
 const popupProfileOpenButton = document.querySelector('.profile__button-edit');
-const popupProfileCloseButton = document.querySelector('.popup__close-data');
 const popUpProfile = document.querySelector('.popup_edit');
 const popupProfileFormElement = document.querySelector('.popup__form-data');
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -51,19 +50,12 @@ function closeByEsc(evt) {
     closePopup(openedPopup);
   }
 }
-//закрытие по overlay
-function closeOverlayPopUp(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target);
-  }
-}
-/*хочу реализовать данную функцию после сдачи спринта, большое спасибо за идею*/
 //универсальная функция
 document.querySelectorAll('.popup').forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (
       evt.target === evt.currentTarget ||
-      evt.target.classList.contains('popup__close')
+      evt.target.classList.contains('popup__close-image')
     ) {
       closePopup(popup);
     }
@@ -84,17 +76,12 @@ function submitProfile(evt) {
 
 popupProfileOpenButton.addEventListener('click', assingValue);
 popupProfileFormElement.addEventListener('submit', submitProfile);
-popupProfileCloseButton.addEventListener('click', () =>
-  closePopup(popUpProfile)
-);
 
 const popUpAdd = document.querySelector('.profile__button-add');
-const popUpRemove = document.querySelector('.popup__close-cards');
 const popUpCards = document.querySelector('.popup_cards');
 const cardsForm = document.querySelector('.popup__cards-form');
 
 popUpAdd.addEventListener('click', () => openPopup(popUpCards));
-popUpRemove.addEventListener('click', () => closePopup(popUpCards));
 
 const imageCollection = document.querySelector('.elements');
 const template = document
@@ -135,8 +122,6 @@ function deleteCard(evt) {
   cardClose.remove();
 }
 const fullScreen = document.querySelector('.popup_full-screen');
-const fullScreenClose = document.querySelector('.popup__close-full-screen');
-fullScreenClose.addEventListener('click', () => closePopup(fullScreen));
 
 const cardsImage = document.querySelector('.popup__input_type_image');
 const cardsLink = document.querySelector('.popup__input_type_link');
@@ -150,10 +135,6 @@ cardsForm.addEventListener('submit', function (evt) {
   submitButtonCreate.setAttribute('disabled', 'disabled');
   submitButtonCreate.classList.add('popup__button_disabled');
 });
-//все слушатели для закрытия по клику на overlay
-fullScreen.addEventListener('click', (evt) => closeOverlayPopUp(evt)); //закрытие по overlay
-popUpProfile.addEventListener('click', (evt) => closeOverlayPopUp(evt)); //закрытие по overlay
-popUpCards.addEventListener('click', (evt) => closeOverlayPopUp(evt)); //закрытие по overlay
 
 function createInitialCards() {
   initialCards.forEach(function (element) {
