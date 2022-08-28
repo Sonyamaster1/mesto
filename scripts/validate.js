@@ -1,4 +1,4 @@
-const obj = {
+/*const obj = {
   formSelector: '.popup__form', //формы
   inputSelector: '.popup__input', //поля ввода
   submitButtonSelector: '.popup__button', //кнопка сохранить
@@ -65,4 +65,4 @@ const enableValidation = (obj) => {
     setEventListener(form, obj);
   });
 };
-enableValidation(obj);
+enableValidation(obj);*/
