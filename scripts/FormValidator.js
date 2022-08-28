@@ -34,24 +34,6 @@ export default class FormValidator {
       this._hideInputError(inputSelector);
     }
   };
-  //слушатель
-  _setEventListener = () => {
-    this._toggleButtonState(); //button
-    this._inputCollection.forEach((inputSelector) => {
-      inputSelector.addEventListener('input', () => {
-        this._isValid(inputSelector);
-        this._toggleButtonState(); //button
-      });
-    });
-  };
-  enableValidation = () => {
-    this._setEventListener();
-  };
-  _hasInvalidInput = () => {
-    return this._inputCollection.some((inputSelector) => {
-      return !inputSelector.validity.valid;
-    });
-  };
   //кнопка
   _toggleButtonState = () => {
     if (this._hasInvalidInput(this._inputCollection)) {
@@ -65,5 +47,23 @@ export default class FormValidator {
       );
       this._submitButtonElement.removeAttribute('disabled', 'disabled');
     }
+  };
+  _hasInvalidInput = () => {
+    return this._inputCollection.some((inputSelector) => {
+      return !inputSelector.validity.valid;
+    });
+  };
+  //слушатель
+  _setEventListener = () => {
+    this._toggleButtonState(); //button
+    this._inputCollection.forEach((inputSelector) => {
+      inputSelector.addEventListener('input', () => {
+        this._isValid(inputSelector);
+        this._toggleButtonState(); //button
+      });
+    });
+  };
+  enableValidation = () => {
+    this._setEventListener();
   };
 }
