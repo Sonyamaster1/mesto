@@ -37,10 +37,8 @@ export default class FormValidator {
   //кнопка
   _toggleButtonState = () => {
     if (this._hasInvalidInput(this._inputCollection)) {
-      this._submitButtonElement.classList.add(
-        this._validationConfig.inactiveButtonClass
-      );
-      this._submitButtonElement.setAttribute('disabled', 'disabled');
+      this.inactiveButton();
+      this.disabledButton();
     } else {
       this._submitButtonElement.classList.remove(
         this._validationConfig.inactiveButtonClass
@@ -65,5 +63,20 @@ export default class FormValidator {
   };
   enableValidation = () => {
     this._setEventListener();
+  };
+  disabledButton = () => {
+    this._submitButtonElement.setAttribute('disabled', 'disabled');
+  };
+  inactiveButton = () => {
+    this._submitButtonElement.classList.add(
+      this._validationConfig.inactiveButtonClass
+    );
+  };
+  // очистка от ошибок
+  resetInputs = () => {
+    this._toggleButtonState();
+    this._inputCollection.forEach((inputSelector) => {
+      this._hideInputError(inputSelector);
+    });
   };
 }
