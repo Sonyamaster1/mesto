@@ -35,7 +35,6 @@ popUpCardsValidation.enableValidation();
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
-  popUpProfileValidation.resetInputs();
 }
 //закрытие попап
 function closePopup(popup) {
@@ -72,6 +71,7 @@ function assingValue() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
   openPopup(popUpProfile);
+  popUpProfileValidation.resetInputs();
 }
 function submitProfile(evt) {
   evt.preventDefault();
@@ -82,10 +82,13 @@ function submitProfile(evt) {
 
 popupProfileOpenButton.addEventListener('click', assingValue);
 popupProfileFormElement.addEventListener('submit', submitProfile);
-popUpAdd.addEventListener('click', () => openPopup(popUpCards));
+popUpAdd.addEventListener('click', () => {
+  openPopup(popUpCards);
+  popUpCardsValidation.resetInputs();
+});
 
 //делаем чистую функцию
-function renderCards(item) {
+function createCard(item) {
   const card = new Card(item, '#template-element', openPopup, handlePopUp);
   const cardTemplate = card.generateCard();
   return cardTemplate;
@@ -98,15 +101,14 @@ function createNewCard() {
   cardsForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const cardData = { name: cardsImage.value, link: cardsLink.value };
-    addCard(renderCards(cardData), imageCollection);
+    addCard(createCard(cardData), imageCollection);
     closePopup(popUpCards);
     cardsImage.value = '';
     cardsLink.value = '';
-    popUpCardsValidation.inactiveButton();
     popUpCardsValidation.disabledButton();
   });
 }
 createNewCard();
 initialCards.forEach((item) => {
-  addCard(renderCards(item), imageCollection);
+  addCard(createCard(item), imageCollection);
 });

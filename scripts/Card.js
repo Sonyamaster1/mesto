@@ -1,7 +1,4 @@
 /*import { fullScreen } from "./index.js";*/
-const fullScreen = document.querySelector('.popup_full-screen'); //попап изображения
-const fullText = fullScreen.querySelector('.popup__full-text'); //название картинки
-const fullImage = fullScreen.querySelector('.popup__full-image'); //картинка
 export default class Card {
   constructor(data, templateSelector, openPopup, handlePopUp) {
     this._name = data.name;

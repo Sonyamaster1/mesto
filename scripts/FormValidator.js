@@ -37,7 +37,6 @@ export default class FormValidator {
   //кнопка
   _toggleButtonState = () => {
     if (this._hasInvalidInput(this._inputCollection)) {
-      this.inactiveButton();
       this.disabledButton();
     } else {
       this._submitButtonElement.classList.remove(
@@ -66,8 +65,6 @@ export default class FormValidator {
   };
   disabledButton = () => {
     this._submitButtonElement.setAttribute('disabled', 'disabled');
-  };
-  inactiveButton = () => {
     this._submitButtonElement.classList.add(
       this._validationConfig.inactiveButtonClass
     );
