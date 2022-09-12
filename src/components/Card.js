@@ -1,11 +1,10 @@
-/*import { fullScreen } from "./index.js";*/
 export default class Card {
-  constructor(data, templateSelector, openPopup, handlePopUp) {
+  constructor(data, templateSelector, handleCardClick, card) {
     this._name = data.name;
     this._link = data.link;
-    this.openPopup = openPopup;
     this._templateSelector = templateSelector;
-    this._handlePopUp = handlePopUp;
+    this._handleCardClick = handleCardClick;
+    this._card = card;
   }
   _getTemplate() {
     const cardTemplate = document
@@ -21,9 +20,7 @@ export default class Card {
     this.cardImage.src = this._link;
     this.cardTitle.textContent = this._name;
     this.cardImage.alt = `Перед вами ${this._name}`;
-    this._setTrashListener();
-    this._setOpenPopupListener();
-    this._setLikeListener();
+    this._setEventListeners();
     return this._element;
   }
   // лайк
@@ -32,30 +29,27 @@ export default class Card {
       .querySelector('.element__like')
       .classList.toggle('element__like_active');
   }
-  //слушатель лайка
-  _setLikeListener() {
-    this._element
-      .querySelector('.element__like')
-      .addEventListener('click', () => {
-        this._getLike();
-      });
-  }
   //корзина
   _getTrash() {
     this._element.remove();
   }
-  //слушатель корзины
-  _setTrashListener() {
+  _handleOpenImagePopup(){
+    this._card._handleCardClick(this._name, this._link);
+  }
+  // все слушатели
+  _setEventListeners() {
+    this._element
+      .querySelector('.element__like')
+      .addEventListener('mousedown', () => {
+        this._getLike();
+      });
     this._element
       .querySelector('.element__button-trash')
-      .addEventListener('click', () => {
+      .addEventListener('mousedown', () => {
         this._getTrash();
       });
-  }
-  //слушатель попапа
-  _setOpenPopupListener() {
     this.cardImage.addEventListener('click', () => {
-      this._handlePopUp(this._name, this._link);
+      this._handleOpenImagePopup();
     });
   }
 }
