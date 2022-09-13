@@ -9,7 +9,7 @@ export default class PopupWithImage extends Popup {
   open(name, link) {
     super.open();
     this._fullText.textContent = name;
-    link = this._fullImage.src;
+    this._fullImage.src = link;
     this._fullImage.alt = `Перед вами ${name}`;
   }
 }

@@ -1,10 +1,9 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, card) {
+  constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleCardClick = handleCardClick;
-    this._card = card;
+    this.handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardTemplate = document
@@ -33,8 +32,8 @@ export default class Card {
   _getTrash() {
     this._element.remove();
   }
-  _handleOpenImagePopup(){
-    this._card._handleCardClick(this._name, this._link);
+  _handleOpenImagePopup() {
+    this.handleCardClick(this._name, this._link);
   }
   // все слушатели
   _setEventListeners() {
