@@ -1,12 +1,12 @@
-import './index.css';
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import { initialCards, validationConfig } from '../utils/constants.js';
-import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
+import "./index.css";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { initialCards, validationConfig } from "../utils/constants.js";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   popupProfileOpenButton,
   popupProfileFormElement,
@@ -16,7 +16,7 @@ import {
   cardsForm,
   cardsImage,
   cardsLink,
-} from '../utils/constants.js';
+} from "../utils/constants.js";
 //валидация 1 формы
 const popUpProfileValidation = new FormValidator(
   validationConfig,
@@ -36,34 +36,33 @@ function createNewCard(item) {
         fullScreen.open(name, link);
       },
     },
-    '#template-element'
+    "#template-element"
   );
   const cardTemplate = card.generateCard();
   return cardTemplate;
 }
 
-// селекторы попапа редактирования
-const profileSelectors = {
-  profileName: '.profile__name',
-  profileAbout: '.profile__about',
-};
+// создание экземпляра UserInfo
+const profilePopup = new UserInfo({
+  profileName: ".profile__name",
+  profileAbout: ".profile__about",
+});
 // создание экземпляра PopupWithForm
-const profilePopup = new UserInfo(profileSelectors); // передаем селекторы
 const newProfilePopup = new PopupWithForm(
   {
     handleFormSubmit: (elem) => {
-      profilePopup.setUserInfo(elem);
-      const profileData = profilePopup.getUserInfo();
-      profileData.name = nameInput.value;
-      profileData.about = jobInput.value;
-      popUpProfileValidation.resetInputs();
+      profilePopup.setUserInfo({
+        name: nameInput.value,
+        about: jobInput.value,
+      });
+      popUpProfileValidation.resetInputs(); //очищаем валидацию
     },
   },
-  '.popup_edit'
+  ".popup_edit"
 );
-newProfilePopup.setEventListeners();
+newProfilePopup.setEventListeners(profilePopup.getUserInfo());
 // навешиваем слушатель на кнопку
-popupProfileOpenButton.addEventListener('click', function () {
+popupProfileOpenButton.addEventListener("click", function () {
   newProfilePopup.open();
 });
 
@@ -75,7 +74,7 @@ const cardList = new Section(
       cardList.addItem(createNewCard(item));
     },
   },
-  '.elements'
+  ".elements"
 );
 cardList.renderItems();
 
@@ -89,14 +88,14 @@ const newCardPopup = new PopupWithForm(
       popUpCardsValidation.disabledButton();
     },
   },
-  '.popup_cards'
+  ".popup_cards"
 );
 newCardPopup.setEventListeners();
 // навешиваем слушатель на кнопку
-popUpAdd.addEventListener('click', () => {
+popUpAdd.addEventListener("click", () => {
   newCardPopup.open();
 });
 
 // попап  с картинкой
-const fullScreen = new PopupWithImage('.popup_full-screen');
+const fullScreen = new PopupWithImage(".popup_full-screen");
 fullScreen.setEventListeners();

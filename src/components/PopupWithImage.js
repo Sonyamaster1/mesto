@@ -7,9 +7,9 @@ export default class PopupWithImage extends Popup {
     this._fullText = this._popup.querySelector('.popup__full-text'); //текст попапа
   }
   open(name, link) {
-    super.open();
     this._fullText.textContent = name;
     this._fullImage.src = link;
     this._fullImage.alt = `Перед вами ${name}`;
+    super.open();
   }
 }
