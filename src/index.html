@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="root">
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
+        <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo" />
       </header>
       <main class="content">
         <section class="profile">
           <img
-            src="./images/кусто.jpg"
+            src="<%=require('./images/кусто.jpg')%>"
             alt="Жак Ив Кусто"
             class="profile__avatar"
           />
@@ -23,7 +22,7 @@
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <button type="button" class="profile__button-edit">
                 <img
-                  src="./images/Vectoredit.svg"
+                  src="<%=require('./images/Vectoredit.svg')%>"
                   alt="Карандаш"
                   class="profile__image-edit"
                 />
@@ -33,7 +32,7 @@
           </div>
           <button type="button" class="profile__button-add">
             <img
-              src="./images/Vector.svg"
+              src="<%=require('./images/Vector.svg')%>"
               alt="Кнопка добавления"
               class="profile__image-add"
             />
@@ -85,7 +84,7 @@
           </form>
           <button type="button" class="popup__close popup__close-data">
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="закрывающий крестик"
               class="popup__close-image"
             />
@@ -134,7 +133,7 @@
           </form>
           <button type="button" class="popup__close popup__close-cards">
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="закрывающий крестик"
               class="popup__close-image"
             />
@@ -143,11 +142,11 @@
       </div>
       <div class="popup popup_full-screen">
         <figure class="popup__container-full-screen">
-          <img src="./images/Алтай.jpg" alt="" class="popup__full-image" />
+          <img src="<%=require('./images/Алтай.jpg')%>" alt="" class="popup__full-image" />
           <figcaption class="popup__full-text">текст</figcaption>
           <button type="button" class="popup__close popup__close-full-screen">
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="закрывающий крестик"
               class="popup__close-image"
             />
@@ -161,15 +160,14 @@
           <div class="element__text">
             <h2 class="element__title"></h2>
             <button type="button" class="element__button-like">
-              <img src="./images/Vector3.svg" class="element__like" />
+              <img src="<%=require('./images/Vector3.svg')%>" class="element__like" />
             </button>
           </div>
           <button type="reset" class="element__button-trash">
-            <img src="./images/trash.svg" class="element__trash" />
+            <img src="<%=require('./images/trash.svg')%>" class="element__trash" />
           </button>
         </div>
       </template>
     </div>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
