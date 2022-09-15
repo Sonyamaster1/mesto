@@ -50,20 +50,21 @@ const profilePopup = new UserInfo({
 // создание экземпляра PopupWithForm
 const newProfilePopup = new PopupWithForm(
   {
-    handleFormSubmit: (elem) => {
+    handleFormSubmit: (data) => {
       profilePopup.setUserInfo({
-        name: nameInput.value,
-        about: jobInput.value,
+        name: data.name,
+        about: data.about,
       });
       popUpProfileValidation.resetInputs(); //очищаем валидацию
     },
   },
   ".popup_edit"
 );
-newProfilePopup.setEventListeners(profilePopup.getUserInfo());
+newProfilePopup.setEventListeners();
 // навешиваем слушатель на кнопку
 popupProfileOpenButton.addEventListener("click", function () {
   newProfilePopup.open();
+  newProfilePopup.setInputsValues(profilePopup.getUserInfo());
 });
 
 // новая карточка
