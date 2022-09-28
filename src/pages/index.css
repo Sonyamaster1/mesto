@@ -44,3 +44,6 @@
 @import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__input/_type_error-active/popup__input_type_error-active.css);
 @import url(../blocks/popup/_cards/popup_cards.css);
+@import url(../blocks/profile/__pen/profile__pen.css);
+@import url(../blocks/element/__like-counter/element__like-counter.css);
+@import url(../blocks/element/__button-trash/_type_active/element__button-trash_type_active.css);

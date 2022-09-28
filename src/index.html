@@ -8,18 +8,23 @@
   <body class="root">
     <div class="page">
       <header class="header">
-        <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип Место"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile">
           <img
             src="<%=require('./images/кусто.jpg')%>"
-            alt="Жак Ив Кусто"
+            alt="Аватарка страницы"
             class="profile__avatar"
           />
+          <div class="profile__pen"></div>
           <div class="profile__info">
             <div class="profile__info-container">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name">Обновление...</h1>
               <button type="button" class="profile__button-edit">
                 <img
                   src="<%=require('./images/Vectoredit.svg')%>"
@@ -28,7 +33,7 @@
                 />
               </button>
             </div>
-            <p class="profile__about">Исследователь океана</p>
+            <p class="profile__about">Обновление...</p>
           </div>
           <button type="button" class="profile__button-add">
             <img
@@ -43,6 +48,40 @@
       <footer class="footer">
         <p class="footer__text">&copy; 2022 Митрофанова Софья</p>
       </footer>
+      <div class="popup popup_avatar">
+        <div class="popup__container">
+          <legend class="popup__text">Обновить аватар</legend>
+          <form
+            action="#"
+            class="popup__form popup__avatar-form"
+            required
+            novalidate
+          >
+            <fieldset class="popup__fieldset popup__fieldset_type_avatar">
+              <input
+                type="url"
+                class="popup__input popup__input_type_avatar"
+                name="avatar"
+                autocomplete="off"
+                id="avatar-input"
+                minlength="2"
+                required
+              />
+              <span class="popup__error avatar-input-error"></span>
+            </fieldset>
+            <button type="submit" class="popup__button popup__button_type_save">
+              Сохранить
+            </button>
+          </form>
+          <button type="button" class="popup__close popup__close-data">
+            <img
+              src="<%=require('./images/CloseIcon.svg')%>"
+              alt="закрывающий крестик"
+              class="popup__close-image"
+            />
+          </button>
+        </div>
+      </div>
       <div class="popup popup_edit">
         <div class="popup__container">
           <legend class="popup__text">Редактировать профиль</legend>
@@ -56,7 +95,7 @@
               <input
                 class="popup__input popup__input_type_name"
                 type="text"
-                value="Жак-Ив Кусто"
+
                 name="name"
                 id="name-input"
                 autocomplete="off"
@@ -68,7 +107,7 @@
               <input
                 class="popup__input popup__input_type_about"
                 type="text"
-                value="Исследователь океана"
+                
                 name="about"
                 id="about-input"
                 autocomplete="off"
@@ -142,7 +181,11 @@
       </div>
       <div class="popup popup_full-screen">
         <figure class="popup__container-full-screen">
-          <img src="<%=require('./images/Алтай.jpg')%>" alt="" class="popup__full-image" />
+          <img
+            src="<%=require('./images/Алтай.jpg')%>"
+            alt=""
+            class="popup__full-image"
+          />
           <figcaption class="popup__full-text">текст</figcaption>
           <button type="button" class="popup__close popup__close-full-screen">
             <img
@@ -160,14 +203,36 @@
           <div class="element__text">
             <h2 class="element__title"></h2>
             <button type="button" class="element__button-like">
-              <img src="<%=require('./images/Vector3.svg')%>" class="element__like" />
+              <img
+                src="<%=require('./images/Vector3.svg')%>"
+                class="element__like"
+              />
+              <div class="element__like-counter">0</div>
             </button>
           </div>
           <button type="reset" class="element__button-trash">
-            <img src="<%=require('./images/trash.svg')%>" class="element__trash" />
+            <img
+              src="<%=require('./images/trash.svg')%>"
+              class="element__trash"
+            />
           </button>
         </div>
       </template>
+      <div  class="popup popup_trash">
+        <div class="popup__container">
+          <h1 class="popup__text">Вы уверены?</h1>
+          <button type="submit" class="popup__button popup__button_type_delete">
+            Да
+          </button>
+          <button type="button" class="popup__close popup__close-data">
+            <img
+              src="<%=require('./images/CloseIcon.svg')%>"
+              alt="закрывающий крестик"
+              class="popup__close-image"
+            />
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

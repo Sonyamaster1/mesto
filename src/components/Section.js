@@ -1,6 +1,6 @@
 export default class Section {
-  constructor({ data, renderer }, selector) {
-    this._initialArray = data;
+  constructor({ elem, renderer }, selector) {
+    this._reversedElem = elem;
     this._container = document.querySelector(selector);
     this._renderer = renderer;
   }
@@ -8,6 +8,6 @@ export default class Section {
     this._container.prepend(element);
   }
   renderItems() {
-    this._initialArray.forEach((item) => this._renderer(item));
+    this._reversedElem.forEach((item) => this._renderer(item));
   }
 }

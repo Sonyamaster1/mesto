@@ -1,4 +1,5 @@
 .element__button-trash {
+  display: none;
   width: 18px;
   height: 19px;
   z-index: 3;
