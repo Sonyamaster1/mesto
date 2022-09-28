@@ -9,7 +9,6 @@
   border-radius: 50%;
   background-color: black;
   background-repeat: no-repeat;
-  background-position: center;
 }
 .profile__pen:hover {
   opacity: 0.8;

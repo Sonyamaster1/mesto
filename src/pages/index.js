@@ -3,7 +3,6 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { validationConfig } from "../utils/constants.js";
 import Section from "../components/Section.js";
-//import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
@@ -79,15 +78,6 @@ function createNewCard(item) {
   const cardTemplate = card.generateCard();
   return cardTemplate;
 }
-// обьект класса Section
-/*const cardList = new Section(
-  {
-    renderer: (item) => {
-      cardList.addItem(createNewCard(item));
-    },
-  },
-  ".elements"
-);*/
 // создание экземпляра UserInfo
 const profilePopup = new UserInfo({
   profileName: ".profile__name",
