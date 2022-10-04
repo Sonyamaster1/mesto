@@ -62,6 +62,7 @@
                 type="url"
                 class="popup__input popup__input_type_avatar"
                 name="avatar"
+                placeholder="Ссылка на новый аватар"
                 autocomplete="off"
                 id="avatar-input"
                 minlength="2"
@@ -95,25 +96,27 @@
               <input
                 class="popup__input popup__input_type_name"
                 type="text"
-
+                value=""
                 name="name"
                 id="name-input"
                 autocomplete="off"
                 minlength="2"
                 maxlength="40"
                 required
+                placeholder="Ваше имя"
               />
               <span class="popup__error name-input-error"></span>
               <input
                 class="popup__input popup__input_type_about"
                 type="text"
-                
+                value=""
                 name="about"
                 id="about-input"
                 autocomplete="off"
                 minlength="2"
                 maxlength="200"
                 required
+                placeholder="О себе"
               />
               <span class="popup__error about-input-error"></span>
             </fieldset>
@@ -218,7 +221,7 @@
           </button>
         </div>
       </template>
-      <div  class="popup popup_trash">
+      <div class="popup popup_trash">
         <div class="popup__container">
           <h1 class="popup__text">Вы уверены?</h1>
           <button type="submit" class="popup__button popup__button_type_delete">

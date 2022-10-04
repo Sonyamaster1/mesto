@@ -18,7 +18,7 @@ export default class Card {
     this.handleDeleteCard = handleDeleteCard;
     this.handleLikeCard = handleLikeCard;
     this.handleDeleteLikeCard = handleDeleteLikeCard;
-    this.likes = data.likes.length;
+    this._likes = data.likes;
     this._userId = userId;
     this._id = data._id;
     this._owner = data.owner._id;
@@ -40,30 +40,17 @@ export default class Card {
     this.cardImage.src = this._link;
     this.cardTitle.textContent = this._name;
     this.cardImage.alt = `Перед вами ${this._name}`;
+    this.likeCounter.textContent = this._likes.length;
     this._checkOwner();
     this._checkLikeOwner();
-    this.cardLike.addEventListener("click", () => {
-      if (this.cardLike.classList.contains("element__like_active")) {
-        this.handleDeleteLikeCard(this);
-      } else {
-        this.handleLikeCard(this);
-      }
-    });
-    this.likeCounter.textContent = this.likes;
     this._setEventListeners();
     return this._element;
   }
-  // добавляем лайк
-  getLikeCard() {
-    this.cardLike.classList.add("element__like_active");
-    this.likeCounter.textContent =
-      parseInt(this.likeCounter.textContent, 10) + 1;
-  }
-  // убираем лайк
-  deleteLikeCard() {
-    this.cardLike.classList.remove("element__like_active");
-    this.likeCounter.textContent =
-      parseInt(this.likeCounter.textContent, 10) - 1;
+  // добавляем или убираем лайк
+  toggleLikeCard(data) {
+    this._likes = data.likes;
+    this.likeCounter.textContent = this._likes.length;
+    this.cardLike.classList.toggle("element__like_active");
   }
   // удаление
   remove() {
@@ -76,6 +63,13 @@ export default class Card {
   }
   // все слушатели
   _setEventListeners() {
+    this.cardLike.addEventListener("click", () => {
+      if (this.cardLike.classList.contains("element__like_active")) {
+        this.handleDeleteLikeCard(this);
+      } else {
+        this.handleLikeCard(this);
+      }
+    });
     this.deleteEl.addEventListener("click", () => this.handleDeleteCard(this));
     this.cardImage.addEventListener("click", () => {
       this._handleOpenImagePopup();
@@ -87,16 +81,15 @@ export default class Card {
   }
   // проверяем пользователя
   _checkOwner() {
-    if (this._owner == this._userId) {
+    if (this._owner === this._userId) {
       this.deleteEl.classList.add("element__button-trash_type_active");
     }
   }
   // проверяем пользователя
   _checkLikeOwner() {
-    this._data.likes.forEach((element) => {
-      if (this._owner == this._userId) {
-        this.cardLike.classList.add("element__like_active");
-      }
-    });
+    // метод some проверяет условие
+    if (this._likes.some((user) => this._userId === user._id)) {
+      this.cardLike.classList.add("element__like_active");
+    }
   }
 }

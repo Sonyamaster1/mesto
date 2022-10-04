@@ -17,3 +17,4 @@ export const avatarForm = document.querySelector(".popup__avatar-form"); // фо
 export const cardsImage = document.querySelector(".popup__input_type_image");
 export const cardsLink = document.querySelector(".popup__input_type_link");
 export const avatarPen = document.querySelector(".profile__pen"); // карандаш аватара
+export const submitButton = document.querySelector(".popup__button");

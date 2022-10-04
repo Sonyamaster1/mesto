@@ -7,17 +7,23 @@ export default class UserInfo {
     this._profileAvatar = document.querySelector(profileAvatar); // селектор аватара
   }
   getUserInfo() {
-    //вщзвращаем значения
+    //возвращаем значения
     const info = {};
     info.name = this._profileName.textContent;
     info.about = this._profileAbout.textContent;
     return info;
   }
   setUserInfo({ name, about, avatar }) {
-    //вставляем значения
-    this._profileName.textContent = name;
-    this._profileAbout.textContent = about;
-    this._profileAvatar.src = avatar;
+    // проверяем значения чтобы вставить нужное
+    if (name) {
+      this._profileName.textContent = name; /// data from the user
+    }
+    if (about) {
+      this._profileAbout.textContent = about; /// data from the user
+    }
+    if (avatar) {
+      this._profileAvatar.src = avatar; /// data from the user
+    }
   }
   // вставляем значения для аватара
   setAvatarInfo({ link }) {

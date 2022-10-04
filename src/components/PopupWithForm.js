@@ -18,22 +18,32 @@ export default class PopupWithForm extends Popup {
   }
   setInputsValues(data) {
     this._newFormElement = {};
-    this._inputList.forEach(
-      (elem) => (this._newFormElement[elem.value] = data.value)
-    );
+    data = Object.values(data);
+    for (let i = 0; i < data.length; i++) {
+      this._inputList[i].value = data[i];
+    }
   }
+  // метод для текста кнопки
+  _getIsLoading() {
+    this._submitButtonPopup.textContent = "Сохранение...";
+  }
+  // метод для текста кнопки
+  _removeIsLoading() {
+    this._submitButtonPopup.textContent = "Cохранить";
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._formList.addEventListener("submit", (evt) => {
-      evt.preventDefault(); // отменяем стандартное поведение
-      this._handleFormSubmit(this._getInputValues()); // настраиваем отправку формы
-      this._submitButtonPopup.textContent = "Cохранение..."; // меняем состояние кнопки
-      this.close();
+      evt.preventDefault();
+      this._getIsLoading(); // меняем на Сохранение...
+      this._handleFormSubmit(this._getInputValues());
     });
   }
+
   open() {
     super.open();
-    this._submitButtonPopup.textContent = "Cохранить"; // меняем состояние кнопки
+    this._removeIsLoading(); // меняем на Сохранить
   }
   close() {
     super.close();

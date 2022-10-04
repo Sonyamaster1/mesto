@@ -17,7 +17,9 @@ import {
   cardsLink,
   avatarForm,
   avatarPen,
+  submitButton,
 } from "../utils/constants.js";
+import { data } from "autoprefixer";
 
 // объект Api
 const apiData = {
@@ -39,11 +41,10 @@ popUpCardsValidation.enableValidation();
 //валидация 3 формы
 const popUpAvatarValidation = new FormValidator(validationConfig, avatarForm);
 popUpAvatarValidation.enableValidation();
-
 // объект класса Api
 const api = new Api(apiData);
 // получаем начальный набор карточек
-let cardList;
+let cardList; // изменяю значение ниже, поэтому не могу обьявить константу
 const elementaryCards = api
   .getInitialCards()
   .then(function (data) {
@@ -88,54 +89,66 @@ const profilePopup = new UserInfo({
 const newProfilePopup = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      profilePopup.setUserInfo({
-        name: data.name,
-        about: data.about,
-      });
       api
         .patchUserInfo({
           name: data.name,
           about: data.about,
         })
+        .then(() => {
+          profilePopup.setUserInfo({
+            name: data.name,
+            about: data.about,
+          });
+        })
+        .then(() => newProfilePopup.close())
+        .then(() => {
+          popUpProfileValidation.disabledButton(),
+            popUpProfileValidation.resetInputs();
+        })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          submitButton.textContent = "Сохранить";
         });
-      popUpProfileValidation.resetInputs(); //очищаем валидацию
-      popUpProfileValidation.disabledButton();
     },
   },
   ".popup_edit"
 );
 newProfilePopup.setEventListeners();
-// навешиваем слушатель на кнопку
-popupProfileOpenButton.addEventListener("click", function () {
-  newProfilePopup.open();
-  newProfilePopup.setInputsValues(profilePopup.getUserInfo());
-});
 // попап добавления карточек
 const newCardPopup = new PopupWithForm(
   {
-    handleFormSubmit: () => {
-      const serverData = { name: cardsImage.value, link: cardsLink.value };
+    handleFormSubmit: (item) => {
       api
-        .postNewCard(serverData)
-        .then((serverData) => {
-          cardList.addItem(createNewCard(serverData));
-          popUpCardsValidation.resetInputs();
-          popUpCardsValidation.disabledButton();
+        .postNewCard({ name: item.image, link: item.link })
+        .then((data) => {
+          cardList.addItem(
+            createNewCard({
+              name: data.name,
+              link: data.link,
+              owner: { _id: userId },
+              likes: data.likes,
+              _id: data._id,
+            })
+          );
         })
+        .then(
+          () => newCardPopup.close(),
+          popUpCardsValidation.resetInputs(),
+          popUpCardsValidation.disabledButton()
+        )
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          submitButton.textContent = "Сохранить";
         });
     },
   },
   ".popup_cards"
 );
 newCardPopup.setEventListeners(); // создаются карточки
-// навешиваем слушатель на кнопку
-popUpAdd.addEventListener("click", () => {
-  newCardPopup.open();
-});
 
 // попап  с картинкой
 const fullScreen = new PopupWithImage(".popup_full-screen");
@@ -145,20 +158,34 @@ fullScreen.setEventListeners();
 const popupAvatar = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      profilePopup.setAvatarInfo({ link: data.link });
       api
-        .patchAvatarInfo({ avatar: data.avatar })
-        .then(() => {})
-        .catch((err) => {
-          console.log(err);
+        .patchAvatarInfo({ avatar: data.avatar }) // это метод класса Api
+        .then((info) => {
+          profilePopup.setAvatarInfo({ link: info.avatar }); // это метод из класса UserInfo. profilePopup - экземпляр класса UserInfo
+        })
+        .then(() => {
+          popupAvatar.close(),
+            popUpAvatarValidation.resetInputs(),
+            popUpAvatarValidation.disabledButton();
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          submitButton.textContent = "Сохранить";
         });
-      popUpAvatarValidation.resetInputs();
-      popUpAvatarValidation.disabledButton();
     },
   },
   ".popup_avatar"
 );
 popupAvatar.setEventListeners();
+// навешиваем слушатель на кнопку
+popUpAdd.addEventListener("click", () => {
+  newCardPopup.open();
+});
+// навешиваем слушатель на кнопку
+popupProfileOpenButton.addEventListener("click", function () {
+  newProfilePopup.open();
+  newProfilePopup.setInputsValues(profilePopup.getUserInfo());
+});
 // навешиваем слушатель на кнопку
 avatarPen.addEventListener("click", () => {
   popupAvatar.open();
@@ -185,7 +212,7 @@ function handleLikeCard(item) {
   api
     .getLike(item.getId())
     .then((data) => {
-      item.getLikeCard(data);
+      item.toggleLikeCard(data);
     })
     .catch((err) => {
       console.log(err);
@@ -196,15 +223,15 @@ function handleDeleteLikeCard(item) {
   api
     .deleteLike(item.getId())
     .then((data) => {
-      item.deleteLikeCard(data);
+      item.toggleLikeCard(data);
     })
     .catch((err) => {
       console.log(err);
     });
 }
 // данные пользователя
-let userId;
-let userInfo = api
+let userId; // изменяю значение ниже, поэтому не могу обьявить константу
+const userInfo = api
   .getInfo()
   .then((data) => {
     userId = data._id;
