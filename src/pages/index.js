@@ -13,13 +13,12 @@ import {
   popupProfileFormElement,
   popUpAdd,
   cardsForm,
-  cardsImage,
-  cardsLink,
   avatarForm,
   avatarPen,
-  submitButton,
+  submitButtonAvatar,
+  submitButtonProfile,
+  submitButtonAdd,
 } from "../utils/constants.js";
-import { data } from "autoprefixer";
 
 // объект Api
 const apiData = {
@@ -109,7 +108,7 @@ const newProfilePopup = new PopupWithForm(
           console.log(err);
         })
         .finally(() => {
-          submitButton.textContent = "Сохранить";
+          submitButtonProfile.textContent = "Сохранить";
         });
     },
   },
@@ -142,7 +141,7 @@ const newCardPopup = new PopupWithForm(
           console.log(err);
         })
         .finally(() => {
-          submitButton.textContent = "Сохранить";
+          submitButtonAdd.textContent = "Создать";
         });
     },
   },
@@ -170,7 +169,7 @@ const popupAvatar = new PopupWithForm(
         })
         .catch((err) => console.log(err))
         .finally(() => {
-          submitButton.textContent = "Сохранить";
+          submitButtonAvatar.textContent = "Сохранить";
         });
     },
   },

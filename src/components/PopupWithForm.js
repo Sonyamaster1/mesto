@@ -27,10 +27,6 @@ export default class PopupWithForm extends Popup {
   _getIsLoading() {
     this._submitButtonPopup.textContent = "Сохранение...";
   }
-  // метод для текста кнопки
-  _removeIsLoading() {
-    this._submitButtonPopup.textContent = "Cохранить";
-  }
 
   setEventListeners() {
     super.setEventListeners();
@@ -43,7 +39,6 @@ export default class PopupWithForm extends Popup {
 
   open() {
     super.open();
-    this._removeIsLoading(); // меняем на Сохранить
   }
   close() {
     super.close();

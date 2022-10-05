@@ -14,7 +14,13 @@ export const popupProfileFormElement =
 export const popUpAdd = document.querySelector(".profile__button-add"); //кнопка добавления
 export const cardsForm = document.querySelector(".popup__cards-form"); //форма карточек
 export const avatarForm = document.querySelector(".popup__avatar-form"); // форма аватара
-export const cardsImage = document.querySelector(".popup__input_type_image");
-export const cardsLink = document.querySelector(".popup__input_type_link");
 export const avatarPen = document.querySelector(".profile__pen"); // карандаш аватара
-export const submitButton = document.querySelector(".popup__button");
+export const submitButtonAvatar = document.querySelector(
+  ".popup__button_type_avatar"
+); // кнопка аватара
+export const submitButtonProfile = document.querySelector(
+  ".popup__button_type_save"
+); // кнопка релактирования
+export const submitButtonAdd = document.querySelector(
+  ".popup__button_type_create"
+); // кнопка добавления
