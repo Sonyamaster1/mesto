@@ -23,4 +23,3 @@
 * Webpack
 ### Клонировать репозиторий можно так:
 `git clone https://github.com/Sonyamaster1/mesto.git`
-А также ссылка для ознакомления с проектом [Здесь](https://Sonyamaster1.github.io/mesto/).
